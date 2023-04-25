@@ -40,6 +40,12 @@ public class BookRESTService {
     private BookService ejb;
 
     @GET
+    @Path("/testi")
+    public String testi() {
+    	return "Terve";
+    }
+    
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> findBooks() {
         return repo.findAllEagerly();

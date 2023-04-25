@@ -15,6 +15,9 @@ import com.crowdcollective.model.Publisher;
 @Stateless
 public class BookService {
     private static final Logger LOGGER = Logger.getLogger(BookService.class.getCanonicalName());
+    //@Inject
+    //Logger LOGGER;
+
     @Inject
     private BookRepository bookRepository;
     @Inject

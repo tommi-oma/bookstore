@@ -57,6 +57,9 @@ public class Book {
 	}
 
 	public void setTitle(String title) {
+		if (title == null) {
+			throw new IllegalArgumentException("Null title");
+		}
 		this.title = title;
 	}
 

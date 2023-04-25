@@ -56,7 +56,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <skipITs>true</skipITs>
+       <!-- <skipITs>true</skipITs> -->
 
 		<!-- Define the version of the JBoss BOMs we want to import to specify 
 			tested stacks. -->
@@ -144,6 +144,8 @@
 				<configuration>
 					<!-- Allow Mockito to create mocks in Java > 8 -->
 					<argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
+					<includes>**/*IT.java</includes>
+					<excludes>**/*RAIT.java</excludes>
                 </configuration>
 			</plugin>
 		</plugins>
@@ -161,11 +163,30 @@
 								<value>4410</value>
 							</property>
 						</systemProperties>  -->
+						<excludes>TrivialCalculatorTest.java</excludes>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 
 	</build>
+	<profiles>
+		<profile>
+			<id>RAtests</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${maven-failsafe-plugin.version}</version>
+						<configuration>
+							<excludes>none</excludes>
+							<includes>**/*RAIT.java</includes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
+	</profiles>
 </project>
 
